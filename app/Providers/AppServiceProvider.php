@@ -26,6 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {        
+
+        if($this->app->environment('produccion'))
+        {
+            URL::foceScheme('https');
+        }
+        
        VerifyEmail::toMailUsing(function($notifiable, $url){
           return (new MailMessage)
             ->subject('Verificar Cuenta')
