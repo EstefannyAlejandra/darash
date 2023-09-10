@@ -44,12 +44,10 @@ class CrearPaperRevisor extends Component
              //Guardar 
             $evaluador->save();
 
-          //  Crear notificacion y enviar el email 
-  
-        //    $this->evento->admEvento->notify(new Revisor($this->evento->id,$this->evento->name, auth()->user()->id));
+         
 
-          
-            session()->flash('mensaje','El reviwer fue creado exitosamente');
-            return redirect()->back();
+  
+          // Mensaje de confirmacion
+               $this->emit('reviwer');
     }
 }

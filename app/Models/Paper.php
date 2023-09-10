@@ -32,6 +32,4 @@ class Paper extends Model
          return $this->hasMany(Autor::class);
      }
 
-    
-
 }

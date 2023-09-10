@@ -33,7 +33,8 @@
 
               <div class="w-full min:h-9 h-auto flex items-start mb-3 text-sm">
                 <div class="  text-blue-950 font-bold w-[10%] text-right pr-4 my-auto">Paper</div>
-                <a  class="flex w-[90%] bg-gray-300 text-start py-2 px-4  items-center rounded-lg min:h-8 h-auto" href="{{ asset('storage/papers/z0HpAmMXaiRz15lc1aIs5ksirbV1Z6Qe1ViBxLEw.pdf') }}">Ver Paper</a>
+                <a  class="flex w-[90%] bg-gray-300 text-start py-2 px-4  items-center rounded-lg min:h-8 h-auto" href="{{ asset('storage/papers/'. $paper->paper);
+              }}">Ver Paper</a>
 
               </div>
 
@@ -52,9 +53,7 @@
                         <select wire:model="calificacion"  id="calificacion" name="calificacion" required class="mb-4 rounded h-10 px-3 flex items-center">
                                <option> --- Seleccione --- </option>
                                 <option value="Aceptar"> Aceptar </option>
-                                <option value="Probablemente Acepte "> Probablemente Acepte </option>
-                                <option value="Sin decisión"> Sin decisión </option>
-                                <option value="Probablemente rechazar"> Probablemente rechazar </option>
+                                <option value="Probablemente Acepte "> Aceptar con observaciones</option>
                                 <option value="Rechazar"> Rechazar </option>
                         </select>
                         <x-input-error :messages="$errors->get('calificacion')" class="mt-2" />
@@ -66,10 +65,28 @@
                     <x-input-error :messages="$errors->get('observacion')" class="mt-2" />
                  
 
-                    <button  class="text-white block  text-lg cursor-pointer bottom-0 px-4  bg-blue-950 rounded-lg h-8"">
+                    <button class="text-white block  text-lg cursor-pointer bottom-0 px-4  bg-blue-950 rounded-lg h-8">
                        Guardar 
                     </button>
 
                   </form>
                 </div>
               </div>
+
+              @push('scripts')
+              <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                          Livewire.on('reviwer', () => {
+                          Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: 'Se guardó exitosamente',
+                          showConfirmButton: false,
+                          timer: 2500
+                          })
+                          setTimeout('history.back()',2500);
+                       })
+              </script>
+            
+
+              @endpush

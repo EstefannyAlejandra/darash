@@ -10,21 +10,13 @@ use Illuminate\Notifications\Notification;
 class Revisor extends Notification
 {
     use Queueable;
-
-       private $idE;
-       private $nombreE;
-       private $emailE;
-
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($idE, $nombreE, $emailE )
+    public function __construct()
     {
-        $this->idE = $idE;
-        $this->nombreE = $nombreE;
-        $this->emailE = $emailE;
 
     }
 
@@ -48,9 +40,9 @@ class Revisor extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.', $this->nombreE)
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Nos complace extenderte una cordial invitación para participar como evaluador en el proceso de revisión de un artículo científico. Su experiencia y conocimiento son altamente respetados, y creemos que tu participación sería de un valor significativo para este proceso..')
+                    ->action('Ingresar a Darash', url('/'))
+                    ->line('Gracias por considerar nuestra invitación y por su compromiso con la calidad de la investigación');
     }
 
     /**

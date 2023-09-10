@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('paper');
             $table->foreignId('evento_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->integer('estado')->default(0);
+            $table->string('estado')->default(0);
             $table->timestamps();
         });
     }

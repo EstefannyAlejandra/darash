@@ -49,6 +49,7 @@ class CrearPaper extends Component
 
           // Almacenar el paper
           $paper = $this->paper->store('public/papers');
+
           $datos['paper'] = str_replace('public/papers/','', $paper);
 
           // Crear el paper
@@ -75,17 +76,13 @@ class CrearPaper extends Component
             ]);
         }
 
-           //  Crear notificacion y enviar el email 
+           //  Crear notificacion y enviar el email  admevento porque traigo quien creo el evento y se envia el correo
   
-           $this->evento->admEvento->notify(new NuevoPaper($this->evento->id,$this->evento->name, auth()->user()->id));
+           $this->evento->admEvento->notify(new NuevoPaper($this->evento->id, $this->evento->name, auth()->user()->id));
   
            // Mostrar un mensaje que se envio correctamente
   
-           session()->flash('mensaje','El paper fue creado exitosamente');
-           
-           $this->reset();
-           // PENDIENTE REDIRECCIONAR A SUS PAPERS
-           return redirect()->back();
+                $this->emit('paper');
 
            }
 

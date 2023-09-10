@@ -47,9 +47,9 @@
             @endif
          
         </div>
-        <x-primary-button class="text-black block bg-white py-2 px-8 mt-4 rounded-xl w-1/2 justify-center">
+        <button class="block py-2 px-8 mt-2 rounded-xl w-1/2 justify-center bg-black text-white font-bold">
                 Ingresar 
-        </x-primary-button>
+        </button>
     </form>
 
 </div>

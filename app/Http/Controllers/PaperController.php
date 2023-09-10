@@ -14,7 +14,7 @@ class PaperController extends Controller
      */
     public function index(Evento $evento)
     {
-        if(auth()->user()->rol === '2') {
+        if(auth()->user()->rol === '2' || auth()->user()->rol === '1') {
             return view('papers.index', [
                     'evento' => $evento
             ]);
@@ -56,6 +56,20 @@ class PaperController extends Controller
     public function show(Paper $paper)
     {
         return view('papers.show', [
+            'paper' => $paper
+           
+       ]);
+    }
+
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Paper  $paper
+     * @return \Illuminate\Http\Response
+     */
+    public function resultado(Paper $paper)
+    {
+           return view('papers.show-resultados', [
             'paper' => $paper
            
        ]);

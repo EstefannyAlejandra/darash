@@ -27,11 +27,9 @@ class CrearEvento extends Component
         ]);
 
        // Crear un mensaje
-            session()->flash('mensaje','El evento fue creado exitosamente');
+             $this->emit('evento');
+            // session()->flash('mensaje','El evento fue creado exitosamente');
 
-       // Redireccionar al usuario 
-
-            return redirect()->route('eventos.index');
 
     }
 

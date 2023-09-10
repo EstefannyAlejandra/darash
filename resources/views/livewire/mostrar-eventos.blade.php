@@ -13,7 +13,7 @@
             <spam class="font-bold mr-1">Finaliza:</spam >{{ $evento->fecha_fin }}
         </div>
         <div  class="flex  text-sm">
-             @if(auth()->user()->rol === '2')
+             @if(auth()->user()->rol === '2' || auth()->user()->rol === '1' )
              <div class="">
               <button class="rounded-lg hover:bg-blue-900 mr-2  hover:text-white"><a href="{{ route('eventos.edit', $evento->id)}}" class="px-4">Editar</a></button>
             </div>
@@ -24,7 +24,7 @@
         </div>
     </div>
     </div>
-    @if(auth()->user()->rol === '2')
+    @if(auth()->user()->rol === '2' || auth()->user()->rol === '1' )
     <a href="{{ route('papers.index' , $evento)}}" class="relative min-w-[50px]  w-[8%]  m-1 rounded-md bg-black text-white flex flex-col justify-between min-h-[60px] hover:bg-blue-900 ">
        <span class="block  text-center text-5xl top-0">
         {{ $evento->papers->count() }}

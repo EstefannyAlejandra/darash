@@ -21,6 +21,9 @@ class MostrarEventos extends Component
       }elseif(auth()->user()->rol === '2'){
         $eventos = Evento::where('user_id',auth()->user()->id)->orderBy('id','desc')->paginate(10);
         return view('livewire.mostrar-eventos', ['eventos' => $eventos]);
+      }elseif(auth()->user()->rol === '1'){
+        $eventos = Evento::paginate(10);
+        return view('livewire.mostrar-eventos', ['eventos' => $eventos]);
       }
    }
 }

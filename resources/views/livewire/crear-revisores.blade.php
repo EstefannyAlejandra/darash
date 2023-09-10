@@ -96,5 +96,19 @@
                             </form>
                                   </div>
                                 </div>
-
+                                @push('scripts')
+                                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                  <script>
+                                            Livewire.on('revisor', () => {
+                                            Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            title: 'Se envió notificación al revisor exitosamente',
+                                            showConfirmButton: false,
+                                            timer: 2500
+                                            })
+                                            setTimeout('history.back()',2500);
+                                         })
+                                </script>
+                             @endpush
 
