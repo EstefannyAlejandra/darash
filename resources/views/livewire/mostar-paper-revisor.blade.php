@@ -1,7 +1,6 @@
 <div>
     @auth
-        
-
+      
         <div class="flex flex-col justify-center text-center pt-12 items-center ">
                 <h2 class="pb-10">Papers</h2>
                 @forelse($revisor as $paper)

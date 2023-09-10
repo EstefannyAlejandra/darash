@@ -9,7 +9,6 @@ use App\Models\Evento;
 use Livewire\Component;
 use App\Models\Evaluador;
 use Livewire\WithFileUploads;
-use App\Notifications\NuevoPaper;
 use App\Notifications\Revisor;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,7 +45,7 @@ class crearRevisores extends Component
 
         // Guardar los revisores 
 
-        $crearEvaluador =  Evaluador::create([
+        $crearEvaluador =  $this->paper->evaluador()->create([
 
             'name' => $datos['name'],
             'surname' => $datos['surname'],
@@ -56,23 +55,12 @@ class crearRevisores extends Component
             'calificacion' => ''
         ]);
 
-
+        $crearEvaluador->notify(new Revisor());
          //  Crear notificacion y enviar el email 
-
-            // $nuevaPostulacion = new Revisor();
-            // $nuevaPostulacion->$paper;
-            // $nuevaPostulacion->$datos['email'];
-            // $nuevaPostulacion->$datos['email'];
-            
-            // $this->vacante->reclutador->notify($nuevaPostulacion);
+    
+            // Mensaje 
         
-            session()->flash('mensaje','Se envio notificacion al revisor exitosamente');
-
-            $this->reset([
-                'name',
-                'surname',
-                'email'
-            ]);
+            $this->emit('revisor');
    }
 
 }

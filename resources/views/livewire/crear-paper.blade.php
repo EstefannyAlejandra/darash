@@ -31,11 +31,12 @@
                         required/>
                         <input-error :messages="$errors->get('paper')" class="mt-2" />
 
-                        <x-input-label for="topicos " :value="__('Topicos')" />
+                        <x-input-label for="topicos " :value="__('Topicos')" /> 
                         <x-text-input 
                         class="border border-none  h-8 md:w-[100%] w-[380px]  bg-gray-300 text-xl pl-5 focus:outline-none   focus:placeholder:text-gray-500 focus:valid:ring-blue-400 rounded-lg"
                         id="topicos"
                         type="text"
+                        placeholder="Por favor separarlos por comas"
                         wire:model="topicos" 
                         :value="old('topicos')" required autofocus />
                         <x-input-error :messages="$errors->get('topicos')" class="mt-2" />
@@ -92,15 +93,23 @@
                         <button  class="text-gray-200 text-xs block p-5 underline underline-offset-2" wire:click.prevent="addUsers">+ Agregar otro autor</button>
 
                 </form>
-          
-                @if(session()->has('mensaje'))
-                <div  class="uppercase border text-lg border-gree-600 bg-green-100 text-green-600 font-bold w-96 text-center p-5 rounded-2xl">
-                    {{ session('mensaje')}}
-                </div>
-                @endif  
+            </div>
+           </div>
         </div>
-      </div>
+       </div>
     </div>
-  </div>
-  </div>
-
+                @push('scripts')
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                            Livewire.on('paper', () => {
+                            Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'El paper fue creado exitosamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                            })
+                            setTimeout('history.back()', 1500);
+                        })
+                </script>
+                @endpush

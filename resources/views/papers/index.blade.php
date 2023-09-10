@@ -1,5 +1,5 @@
 <x-app-layout>
- 
+  
    <div class="flex flex-col justify-center text-center pt-12 items-center ">
            <h1 class="pb-2 text-xl font-bold w-[800px]"> {{ $evento->name }} </h1>
            <h2 class="pb-10">Papers</h2>
@@ -13,7 +13,8 @@
 
                        <span class="basis-1/3 text-left"> {{$paper->created_at->diffForHumans()}} </span>
                        {{-- <span class="basis-1/3 text-center"> Pendiente {{$paper->estado}} </span> --}}
-                        <span class="basis-1/3 text-center"> Revisores {{$paper->evaluador->count()}} </span>
+                  
+                        <span class="basis-1/3 text-center"><a href="{{ route('paper.resultado' , $paper)}}"> Ver Calificacion Revisores {{$paper->evaluador->count()}} </a></span>
                        <a href="{{ route('paper.show' , $paper)}}" class="inline-block basis-1/3 text-right">Asignar Revisor</a>
                     </div>
                  </div>

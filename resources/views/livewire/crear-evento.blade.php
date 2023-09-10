@@ -50,3 +50,20 @@
        </div>
      </div>
 
+     @push('scripts')
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+       <script>
+                 Livewire.on('evento', () => {
+                 Swal.fire({
+                 position: 'top-end',
+                 icon: 'success',
+                 title: 'El evento fue creado exitosamente',
+                 showConfirmButton: false,
+                 timer: 2500
+                 })
+                 setTimeout('history.back()',2500);
+              })
+     </script>
+   
+
+     @endpush

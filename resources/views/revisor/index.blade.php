@@ -1,5 +1,3 @@
 <x-app-layout>
-  
-                        <livewire:mostar-paper-revisor/>
-       
+    <livewire:mostar-paper-revisor/>
 </x-app-layout>

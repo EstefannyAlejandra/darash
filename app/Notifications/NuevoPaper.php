@@ -22,8 +22,8 @@ class NuevoPaper extends Notification
      */
     public function __construct($id_evento, $nombre_evento,  $user_id)
     {
-        $this->id_evento = $id_evento;
-        $this->nombre_evento = $nombre_evento;
+         $this->id_evento = $id_evento;
+         $this->nombre_evento = $nombre_evento;
          $this->user_id = $user_id;
     }
 
@@ -47,9 +47,9 @@ class NuevoPaper extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Notificación de un nuevo paper al evento:' , $this->nombre_evento)
-                
-                    ->action('Ver paper', url('/dashboard'))
+                    ->line('Por este medio se notifica que se ha creado un nuevo paper al evento: ')
+                    ->line($this->nombre_evento)
+                    ->action('Ver paper', url('/'))
                     ->line('Gracias por utilizar DARASH - UNICESMAG!');
     }
 
