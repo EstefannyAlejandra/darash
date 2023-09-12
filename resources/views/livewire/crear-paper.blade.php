@@ -20,16 +20,9 @@
                         <textarea  wire:model.debounce.250ms="resumen"  name="resumen" id="resumen"  class="border border-none  h-32 w-[100%]  bg-gray-300 text-sm p-3  pt-2 focus:outline-none resize-none mb-3 rounded-lg"  ></textarea>
                         <x-input-error :messages="$errors->get('resumen')" class="mt-2" />
 
-                    <!-- palabras_claves -->
-
-                        <input
-                        class="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-300 file:text-gray-600 hover:file:bg-black hover:file:text-white mb-2"
-                        id="paper"
-                        type="file" 
-                        accept="application/pdf"
-                        wire:model="paper" 
-                        required/>
-                        <input-error :messages="$errors->get('paper')" class="mt-2" />
+                    <!-- documento -->
+                
+                    
 
                         <x-input-label for="topicos " :value="__('Topicos')" /> 
                         <x-text-input 
