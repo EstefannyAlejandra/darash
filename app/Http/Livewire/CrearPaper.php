@@ -30,7 +30,7 @@ class CrearPaper extends Component
             'titulo' => 'required|string|unique:papers',
             'resumen' => 'required|string',
             'topicos' => 'required|string',
-            'paper' =>  'required|mimes:pdf',
+           // 'paper' =>  'mimes:pdf',
             'userPapers' => 'required'
     ];
 
@@ -48,17 +48,18 @@ class CrearPaper extends Component
          $datos =  $this->validate();
 
           // Almacenar el paper
-          $paper = $this->paper->store('public/papers');
+          //$paper = $this->paper->store('public/papers');
+         //$datos['paper'] = str_replace('public/papers/','', $paper);
 
-          $datos['paper'] = str_replace('public/papers/','', $paper);
-
+         $documento='sinpaper.pdf';
           // Crear el paper
 
           $crearPaper = $this->evento->papers()->create([
             'titulo' => $datos['titulo'],
             'resumen' => $datos['resumen'],
             'topicos' => $datos['topicos'],
-            'paper' => $datos['paper'],
+            'paper' => $documento,
+           // 'paper' => $datos['paper'],
             'user_id'  => auth()->user()->id,
             ]);
 

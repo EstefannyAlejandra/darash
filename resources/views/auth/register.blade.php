@@ -75,7 +75,7 @@
                 </button>
             </form>
 
-            <section class="absolute right-0 mr-10 mb-10 bottom-0">
+            <section class="absolute  sm:mr-10 sm:mb-8  bottom-0 mb-2 right-0 mr-4 ">
                 <a href="{{ route('login') }}" class="text-gray-500 underline underline-offset-4 block text-sm">¿Ya te encuentras registrado?</a>
                 </section>
             </div>
