@@ -2,13 +2,13 @@
 <div class=" relative h-screen overflow-visible space-y-4 pt-2 m-0 text-center">
     <h1 class="text-black font-bold text-4xl tracking-wider my-8">LISTA DE EVENTOS</h1>
     @forelse($eventos as $evento)
-    <div class="group/item w-[80%] min-w-[360px]  bg-gray-200 transition p-2 pb-1 rounded-md m-auto  hover:outline-2  flex relative lace-items-center hover:outline text-left">
+    <div class="group/item w-[80%] min-w-[360px]  border-gray-300 border-2 transition p-2 pb-1 rounded-lg m-auto  hover:outline-2  flex relative lace-items-center hover:outline text-left">
              <div class="w-[92%]">
                   <div class="block p-2 m-1 pl-4 text-white text-md font-bold rounded-md  bg-gradient-to-l from-blue-900 to-black">
                     <a href="{{ route('eventos.show', $evento->id)}}">
                       <p class="line-clamp-1">{{ $evento->name }}</p></a>
                   </div>
-    <div class="flex justify-between items-end pl-4 pr-1  mt-2">
+    <div class="flex justify-between items-end pl-4 pr-1  mt-3">
         <div class="text-sm ">
             <spam class="font-bold mr-1">Finaliza:</spam >{{ $evento->fecha_fin }}
         </div>
@@ -25,15 +25,16 @@
     </div>
     </div>
     @if(auth()->user()->rol === '2' || auth()->user()->rol === '1' )
-    <a href="{{ route('papers.index' , $evento)}}" class="relative min-w-[50px]  w-[8%]  m-1 rounded-md bg-black text-white flex flex-col justify-between min-h-[60px] hover:bg-blue-900 ">
-       <span class="block  text-center text-5xl top-0">
-        {{ $evento->papers->count() }}
+    <a href="{{ route('papers.index' , $evento)}}" class="relative min-w-[50px]  w-[8%]  m-1 mb-2 rounded-md bg-black text-white flex flex-col justify-between min-h-[60px] hover:bg-blue-900 "> 
+       <span class="block text-center mt-1 text-sm mb-0">Ver</span>
+       <span class="block text-center text-3xl mt-0 leading-7 font-medium">
+          {{ $evento->papers->count() }}
+
         @elseif (auth()->user()->rol === '3')
-       
+  
         <a href="{{ route('eventos.show', $evento->id)}}" class="relative min-w-[50px]  w-[8%]  m-1 rounded-md bg-black text-white flex flex-col justify-between min-h-[60px] hover:bg-blue-900 "> 
           <span class="block  text-center text-2xl top-0">
             Crear
-
         @endif
       </span>
      <span class="block mb-2 text-center text-xs  bottom-0">Papers</span>
