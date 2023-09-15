@@ -53,7 +53,7 @@
                         <select wire:model="calificacion"  id="calificacion" name="calificacion" required class="mb-4 rounded h-10 px-3 flex items-center">
                                <option> --- Seleccione --- </option>
                                 <option value="Aceptar"> Aceptar </option>
-                                <option value="Probablemente Acepte "> Aceptar con observaciones</option>
+                                <option value="Probablemente Acepte"> Aceptar con observaciones</option>
                                 <option value="Rechazar"> Rechazar </option>
                         </select>
                         <x-input-error :messages="$errors->get('calificacion')" class="mt-2" />
