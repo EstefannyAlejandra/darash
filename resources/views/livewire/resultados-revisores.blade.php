@@ -1,7 +1,7 @@
         
               <div class="relative flex flex-col min-h-[80vh] bg-white   text-center pt-5 items-end px-20 pb-1 ">
           
-                <h2 class=" text-2xl flex text-center w-full justify-center bg-blue-950 text-white py-2"> {{ $paper->titulo }}</h2>
+                <h2 class=" text-2xl flex text-center w-full justify-center bg-blue-950 text-white py-2"> {{ $paper->evento->name }}</h2>
 
                 <div class=" flex items-center justify-between my-2 w-[90%] mt-5 relative right-0 ">
                     <span class=" block pl-1 text-blue-950 font-semibold">PAPER {{$paper->count()}} </span>
@@ -42,19 +42,25 @@
                   @endforeach
               
                     <div class=" bg-blue-950 h-[2px] w-[90%] mb-3"></div>
-                    <div class=" px-20 mb-3 w-full text-left"><span class=" block pl-1 text-blue-950 font-semibold">Resultados {{$paper->evaluador->count()}} </span></div>
+                    <div class=" px-20 mb-3 w-full text-left"><span class=" block pl-1 text-blue-950 font-semibold"> {{$paper->evaluador->count()}} RESULTADOS </span></div>
                     
                     @foreach ($paper->evaluador as $evalua )
                     <div class="w-full min:h-9 h-auto flex items-start mb-3 text-sm">
                       <div class="  text-blue-950 font-bold w-[10%] text-right pr-4 my-auto">Evaluador </div>
                       <div class="flex   w-[90%] bg-gray-300 text-start py-2 px-4  items-center rounded-lg min:h-8 h-auto">
-                        <div class="w-[20%]">
-                        <span class="text-blue-950 font-semibold">Nombre:</span><span class="pl-2">{{ $evalua->name }}</span>
+                        <div class="w-[23%]">
+                        <span class="text-blue-950 font-semibold">Nombre:</span><span class="pl-2">{{ $evalua->name .' '. $evalua->surname }}</span>
                         </div>
-                        <div class="w-[20%] ">
-                        <span class="text-blue-950 font-semibold">Calificación:</span><span class="pl-2">{{ $evalua->calificacion }}</span>
+                        <div class="w-[19%] ">
+                        <span class="text-blue-950 font-semibold">Calificación:</span><span class="pl-2">
+                          @if( $evalua->calificacion)
+                          {{ $evalua->calificacion }}
+                          @else 
+                             Sin Evaluar 
+                          @endif
+                        </span>
                         </div>
-                        <div class="w-[60%] ">
+                        <div class="w-[58%] ">
                         <span class="text-blue-950 font-semibold">Observacion:</span><span class="pl-2">{{ $evalua->observacion }}</span>
                         </div>
                       </div>
@@ -82,14 +88,25 @@
                         
                                 <button class="text-white block  text-lg cursor-pointer bottom-0 px-4 mr-8 bg-blue-950 rounded-lg h-10 mx-10">   Enviar </button>
                        </form>
-                       @if(session()->has('mensaje'))
-                       <div class="uppercase border border-gree-600 bg-green-100 text-green-600 font-bold p-2 my-5">
-                           {{ session('mensaje')}}
-                       </div>
-                       @endif 
-                       <a href="javascript:history.back()"> Volver Atrás</a>
+                       <a href="javascript:history.back()" class="h-10 w-36 bg-black text-white rounded-xl flex justify-center items-center text-center font-semibold "> Volver Atrás</a>
                    </div>
-                 
               </div>
-            
         </div>
+
+        @push('scripts')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <script>
+                    Livewire.on('resultado', () => {
+                    Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Se agregos la calificacion y envio Notificacion exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                    setTimeout('history.back()',1500);
+                 })
+        </script>
+      
+
+        @endpush
