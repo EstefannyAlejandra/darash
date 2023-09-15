@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Evento;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Paper extends Model
 {
@@ -30,6 +31,16 @@ class Paper extends Model
      public function autor()
      {
          return $this->hasMany(Autor::class);
+     }
+
+     public function user()
+     {
+    	return $this->belongsTo(User::class);
+     }
+
+     public function evento()
+     {
+    	return $this->belongsTo(Evento::class);
      }
 
 }

@@ -82,9 +82,9 @@
                           icon: 'success',
                           title: 'Se guardó exitosamente',
                           showConfirmButton: false,
-                          timer: 2500
+                          timer: 1500
                           })
-                          setTimeout('history.back()',2500);
+                          setTimeout('history.back()',1500);
                        })
               </script>
             

@@ -40,9 +40,9 @@ class Revisor extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Nos complace extenderte una cordial invitación para participar como evaluador en el proceso de revisión de un artículo científico. Su experiencia y conocimiento son altamente respetados, y creemos que tu participación sería de un valor significativo para este proceso..')
+                    ->line('Conocedores de su excelente trayectoria científica y profesional, nos complace extenderte una cordial invitación para participar como miembro del Comité Científico de nuestro Congreso. Para ello es necesario que se registre en')
                     ->action('Ingresar a Darash', url('/'))
-                    ->line('Gracias por considerar nuestra invitación y por su compromiso con la calidad de la investigación');
+                    ->line('Gracias por considerar nuestra invitación y por su compromiso con la educación y los procesos científicos.');
     }
 
     /**

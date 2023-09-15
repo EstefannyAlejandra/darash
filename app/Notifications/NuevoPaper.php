@@ -47,10 +47,10 @@ class NuevoPaper extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Por este medio se notifica que se ha creado un nuevo paper al evento: ')
+                    ->line('Una nueva contribución se ha registrado en plataforma para asignación de pares.')
                     ->line($this->nombre_evento)
-                    ->action('Ver paper', url('/'))
-                    ->line('Gracias por utilizar DARASH - UNICESMAG!');
+                    ->action('Ver paper', url('/'));
+               
     }
 
     public function toDatabase($notifiable){

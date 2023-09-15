@@ -5,6 +5,9 @@ namespace App\Http\Livewire;
 use App\Models\Paper;
 use Livewire\Component;
 use App\Models\Evaluador;
+use App\Notifications\Resultado;
+
+
 
 class ResultadosRevisores extends Component
 {
@@ -34,9 +37,16 @@ class ResultadosRevisores extends Component
        $res->save();
        
       // Crear notificacion y enviar el email 
-      $this->evento->admEvento->notify(new NuevoPaper($this->evento->id,$this->evento->name, auth()->user()->id));
 
+       if($datos['calificacion'] == 'Aceptar'){
+        $estado = 1;
+        $this->paper->user->notify(new Resultado($this->paper->titulo, $this->paper->evento->name, $estado));
+       }else{
+        $estado = 2;
+        $this->paper->user->notify(new Resultado($this->paper->titulo, $this->paper->evento->name, $estado));
+       }
+     
       // Mensaje de confirmacionas
-       session()->flash('mensaje','Se agregos la calificacion y envio Notificacion exitosamente');
+        $this->emit('resultado');
     }
 }
