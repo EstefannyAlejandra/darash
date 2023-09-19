@@ -18,7 +18,7 @@
                    {{$papers->estado}}
                @endif
              </span> 
-            <a href="" class="inline-block basis-1/3 text-right">Ver Detalle</a>
+            <a href="{{ route('paper.detalle' , $papers)}}" class="inline-block basis-1/3 text-right">Ver Detalle</a>
         </div>
      </div>
             @empty

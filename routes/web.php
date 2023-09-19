@@ -22,6 +22,7 @@ Route::get('/papers/{evento}', [PaperController::class, 'index'])->middleware(['
 Route::get('/paper/{paper}', [PaperController::class, 'show'])->middleware(['auth', 'verified'])->name('paper.show');
 Route::get('/paper/calificacion/{paper}', [PaperController::class, 'resultado'])->middleware(['auth', 'verified'])->name('paper.resultado');
 Route::get('/mispaper', [PaperController::class, 'index'])->middleware(['auth', 'verified'])->name('mispaper.index');
+Route::get('/paper/verdetalle/{paper}', [PaperController::class, 'detalle'])->middleware(['auth', 'verified'])->name('paper.detalle');
 
 // Revisores 
 Route::get('/reviewer', [MostarPaperRevisorController::class, 'index'])->middleware(['auth', 'verified'])->name('revisor.index');
