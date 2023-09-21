@@ -23,6 +23,18 @@
                     <div class="flex   w-[90%] bg-gray-300 text-start py-2 px-4  items-center rounded-lg min:h-8 h-auto">{{ $paper->topicos }}</div>
                   </div>
 
+                  <div class="w-full min:h-9 h-auto flex items-start mb-3 text-sm">
+                    <div class="  text-blue-950 font-bold w-[10%] text-right pr-4 my-auto">Documento</div>
+                    <div class="flex w-[90%] bg-gray-300 text-start py-2 px-4  items-center rounded-lg min:h-8 h-auto">
+                      @if($paper->paper == 'sinpaper.pdf')
+                      Sin cargue de documento
+                      @else
+                    <a href="{{ asset('storage/documentos/'. $paper->paper);
+                    }}">Ver documento</a>
+                    @endif 
+                    </div>
+                  </div>
+
                   @foreach ($paper->autor as $autor )
                  
                   <div class="w-full min:h-9 h-auto flex items-start mb-3 text-sm">

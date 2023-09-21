@@ -45,4 +45,6 @@ class DetallePaper extends Component
            $this->emit('subido');
 
     }
+
+    
 }

@@ -79,9 +79,9 @@
                       <div class="flex  w-[90%]  text-start rounded-lg min:h-8 h-auto ">
                         <form wire:submit.prevent='cargarDocumento({{$paper->id}})' class="flex items-end justify-center w-full mb-48">
                             @csrf
-                            <input type="file" wire:model="documento" class="bg-gray-300 w-[40%]  h-10 px-3 rounded-lg text-center" required>
-                            @error('documento') <span class="error">{{ $message }}</span> @enderror
-                            <x-input-error :messages="$errors->get('documento')" class="mt-2" />
+                            <input type="file" wire:model="file" class="bg-gray-300 w-[40%]  h-10 px-3 rounded-lg text-center" required>
+                            @error('file') <span class="error">{{ $message }}</span> @enderror
+                            <x-input-error :messages="$errors->get('file')" class="mt-2" />
             
                             <button class="text-white block text-lg cursor-pointer bottom-0 px-4 mr-8 bg-blue-950 rounded-lg h-10 mx-10"> Guardar</button>
                        </form>

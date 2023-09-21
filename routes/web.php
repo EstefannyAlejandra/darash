@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaperController;
-use App\Http\Controllers\EventoController;
-use App\Http\Controllers\MostarPaperRevisorController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\MostarPaperRevisor;
+use App\Http\Controllers\EventoController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MostarPaperRevisorController;
 
 Route::get('/', function () {
     return view('welcome');
