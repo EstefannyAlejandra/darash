@@ -9,7 +9,7 @@
                   
                    <span 
                      @if($paper->estado === 'Aceptar' || $paper->estado === 'Probablemente Acepte')
-                     class="text-blue-950 font-bold pb-1 inline-block my-1 bg-green-100 w-full rounded-lg px-3"
+                     class="text-blue-950  font-bold pb-1 inline-block my-1 bg-green-100 w-full rounded-lg px-3"
                      @elseif ($paper->estado === 'Rechazar')
                      class="text-blue-950 font-bold pb-1 inline-block my-1 bg-red-100 w-full rounded-lg px-3"
                      @else
@@ -18,25 +18,34 @@
                      >  {{$paper->titulo}} </span>
 
                    <div class="flex flex-wrap text-sm pt-2">
-                      <span class="basis-1/4  px-3"><strong class="text-gray-500 font-semibold">Estado: </strong> 
+                      <span class="w-[20%]  px-3"><strong class="text-gray-500 font-semibold">Estado: </strong> 
+                     
                         @if($paper->estado === '0')
-                              Sin calificación final
+                              Sin calificación final 
                          @elseif ($paper->estado === 'Aceptar')
                              Aceptado
                           @elseif ($paper->estado === 'Probablemente Acepte')
-                              Aceptado con observaciones 
+                              Aceptado con observaciones 
                           @elseif ($paper->estado === 'Rechazar')
                             Rechazado
                            @else 
                              Desconocido
                         @endif
-                     
-                        
                         </span>
-                       <span class="basis-1/4 text-left"> {{$paper->created_at->diffForHumans()}} </span>
+
+                        <span class="w-[20%] px-3"><strong class="text-gray-500 font-semibold">Documento: </strong> 
+                     
+                           @if($paper->paper === 'sinpaper.pdf')
+                                 Sin Cargar
+                              @else 
+                              Cargado
+                           @endif
+                           </span>
+
+                       <span class="w-[20%] text-left"> {{$paper->created_at->diffForHumans()}} </span>
                        {{-- <span class="basis-1/3 text-center"> Pendiente {{$paper->estado}} </span> --}}
                   
-                        <span class="basis-1/4 text-center underline underline-offset-2 hover:text-blue-800">
+                        <span class="w-[20%] text-center underline underline-offset-2 hover:text-blue-800">
                            <a href="{{ route('paper.resultado' , $paper)}}"><strong class="text-gray-500 font-semibold"> Ver evaluación: </strong>  
                               @if( $paper->evaluador->count() === 1 )
                               {{$paper->evaluador->count()}} calificación
@@ -46,7 +55,7 @@
                               </a>
                         </span>
 
-                       <a href="{{ route('paper.show' , $paper)}}" class="inline-block basis-1/4 text-right underline underline-offset-2 hover:text-blue-800 pr-3">Asignar evaluador</a>
+                       <a href="{{ route('paper.show' , $paper)}}" class="w-[20%] inline-block text-right underline underline-offset-2 hover:text-blue-800 pr-3">Asignar evaluador</a>
                     </div>
                  </div>
                  @empty

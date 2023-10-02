@@ -50,10 +50,15 @@ class Resultado extends Notification
             ->line('Es un placer para nosotros comunicarnos con usted para informarle que su resumen titulado: '. $this->titulo .', ha sido ACEPTADO para ser presentado en el '. $this->evento .', a celebrarse en modalidad hibrida.')
             ->line('Nuestro Comité Científico ha evaluado su resumen y ha considerado que su contribución es valiosa y relevante para la comunidad científico-académica.')
             ->line('Le informamos que el plazo máximo tanto para envío del artículo como el pago de la inscripción, así como toda la información, se encuentra disponible en el Website del Congreso');
-        }else{
+        }elseif($this->estado ===2){
             return (new MailMessage)
             ->line('Su resumen titulado: '. $this->titulo .', ha sido Evaluado para conocer el valor por favor De clic en el siguiente botón : ')
             ->action('Ingresar a Darash', url('/'));
+        }else{
+            return (new MailMessage)
+            ->line('Es un placer para nosotros comunicarnos con usted para informarle que su artículo titulado: '. $this->titulo .', ha sido ACEPTADO para ser presentado en el '. $this->evento .', a celebrarse en modalidad hibrida.')
+            ->line('Nuestro Comité Científico ha evaluado su resumen y ha considerado que su contribución es valiosa y relevante para la comunidad científico-académica.')
+            ->line('Le informamos que el plazo máximo tanto para envío del artículo como el pago de la inscripción, así como toda la información, se encuentra disponible en el Website del Congreso');
         }
      
     }

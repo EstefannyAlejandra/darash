@@ -25,7 +25,6 @@ class PaperController extends Controller
              ]);
         }
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -71,7 +70,13 @@ class PaperController extends Controller
     {
            return view('papers.show-resultados', [
             'paper' => $paper
-           
+       ]);
+    }
+
+    public function detalle(Paper $paper)
+    {
+           return view('papers.show-detalle', [
+            'paper' => $paper
        ]);
     }
 
