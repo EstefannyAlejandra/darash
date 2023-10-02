@@ -37,13 +37,15 @@ class ResultadosRevisores extends Component
        $res->save();
        
       // Crear notificacion y enviar el email 
-
-       if($datos['calificacion'] == 'Aceptar'){
-        $estado = 1;
-        $this->paper->user->notify(new Resultado($this->paper->titulo, $this->paper->evento->name, $estado));
+        if($res->paper != 'sinpaper.pdf'){
+            $estado = 3;
+            $this->paper->user->notify(new Resultado($this->paper->titulo, $this->paper->evento->name, $estado));
+        }elseif($datos['calificacion'] == 'Aceptar'){
+           $estado = 1;
+           $this->paper->user->notify(new Resultado($this->paper->titulo, $this->paper->evento->name, $estado));
        }else{
-        $estado = 2;
-        $this->paper->user->notify(new Resultado($this->paper->titulo, $this->paper->evento->name, $estado));
+          $estado = 2;
+          $this->paper->user->notify(new Resultado($this->paper->titulo, $this->paper->evento->name, $estado));
        }
      
       // Mensaje de confirmacionas

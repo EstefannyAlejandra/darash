@@ -90,7 +90,7 @@
               </div>
               @else
                 <div class="w-[90%] mb-3 mt-3  text-red-800 font-bold text-lg">Ver Documento</div>
-                <a  class="flex w-[90%] bg-gray-300 text-start py-2 px-4  items-center rounded-lg min:h-8 h-auto" href="{{ asset('storage/documentos/'. $paper->paper);
+                <a  class="flex w-[90%] bg-gray-300 text-start py-2 px-4  items-center rounded-lg min:h-8 h-auto" target="_blank" href="{{ asset('storage/documentos/'. $paper->paper);
                 }}">Ver Paper</a>
               @endif
         </div>

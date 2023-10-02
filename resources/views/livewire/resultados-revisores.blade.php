@@ -29,7 +29,7 @@
                       @if($paper->paper == 'sinpaper.pdf')
                       Sin cargue de documento
                       @else
-                    <a href="{{ asset('storage/documentos/'. $paper->paper);
+                    <a target="_blank" href="{{ asset('storage/documentos/'. $paper->paper);
                     }}">Ver documento</a>
                     @endif 
                     </div>
@@ -66,7 +66,13 @@
                         <div class="w-[19%] ">
                         <span class="text-blue-950 font-semibold">Calificación:</span><span class="pl-2">
                           @if( $evalua->calificacion)
-                          {{ $evalua->calificacion }}
+                            @if( $evalua->calificacion == 'Probablemente Acepte')
+                              Aceptado con Observaciones
+                            @elseif ($evalua->calificacion == 'Aceptar')
+                              Aceptado
+                            @else
+                             Rechazado
+                            @endif
                           @else 
                              Sin Evaluar 
                           @endif

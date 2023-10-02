@@ -36,7 +36,7 @@
                       @if($paper->paper == 'sinpaper.pdf')
                       Sin cargue de documento
                       @else
-                    <a href="{{ asset('storage/documentos/'. $paper->paper);
+                    <a target="_blank" href="{{ asset('storage/documentos/'. $paper->paper);
                     }}">Ver documento</a>
                     @endif 
                     </div>

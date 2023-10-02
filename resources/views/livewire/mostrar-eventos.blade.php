@@ -5,7 +5,9 @@
     <div class="group/item w-[80%] min-w-[360px]  border-gray-300 border-2 transition p-2 pb-1 rounded-lg m-auto  hover:outline-2  flex relative lace-items-center hover:outline text-left">
              <div class="w-[92%]">
                   <div class="block p-2 m-1 pl-4 text-white text-md font-bold rounded-md  bg-gradient-to-l from-blue-900 to-black">
-                    <a href="{{ route('eventos.show', $evento->id)}}">
+                    <a  @if(auth()->user()->rol === '2' || auth()->user()->rol === '1' )
+                       href="{{ route('eventos.show', $evento->id)}}
+                       " @endif>
                       <p class="line-clamp-1">{{ $evento->name }}</p></a>
                   </div>
     <div class="flex justify-between items-end pl-4 pr-1  mt-3">
@@ -29,17 +31,19 @@
        <span class="block text-center mt-1 text-sm mb-0">Ver</span>
        <span class="block text-center text-3xl mt-0 leading-7 font-medium">
           {{ $evento->papers->count() }}
-
-        @elseif (auth()->user()->rol === '3')
-  
-        <a href="{{ route('eventos.show', $evento->id)}}" class="relative min-w-[50px]  w-[8%]  m-1 rounded-md bg-black text-white flex flex-col justify-between min-h-[60px] hover:bg-blue-900 "> 
-          <span class="block  text-center text-2xl top-0">
-            Crear
+        <span class="block mb-2 text-center text-xs  bottom-0">Papers</span>
+        </a>
+      @elseif (auth()->user()->rol === '3')
+        @if(($fecha_actual =  date("Y-m-d")) <= ($evento->fecha_fin))
+          <a href="{{ route('eventos.show', $evento->id)}}" class="relative min-w-[50px]  w-[8%]  m-1 rounded-md bg-black text-white flex flex-col justify-between min-h-[60px] hover:bg-blue-900 "> 
+            <span class="block  text-center text-2xl top-0">
+              Crear
+            </span>
+          <span class="block mb-2 text-center text-xs  bottom-0">Papers</span>
+          </a>
+          @endif
         @endif
-      </span>
-     <span class="block mb-2 text-center text-xs  bottom-0">Papers</span>
-     </a>
-  </div>
+    </div>
            @empty
                     <p>No hay evento para mostrar</p>
              @endforelse
